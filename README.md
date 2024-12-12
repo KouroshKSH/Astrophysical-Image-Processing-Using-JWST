@@ -1,6 +1,6 @@
 ![](/Notebooks/img/space_banner_graphic.png)
 
-# Astrophysical Image Processing Using James Webb Space Telescope Obersvations
+# Astrophysical Image Processing Using James Webb Space Telescope Observations
 The aim of this project was to detect and count the number of stars in the [Pillars of Creation](https://www.nasa.gov/feature/goddard/2022/nasa-s-webb-takes-star-filled-portrait-of-pillars-of-creation) image captured by the James Webb Space Telescope ([JWST](https://webb.nasa.gov/)) on October 21st, 2022. The methods and algorithms used for this procedure are covered in the documentation of the project.
 
 <p align="center">
@@ -38,7 +38,7 @@ The list of libraries employed for this project:
 ---
 
 # How to run
-The majority of the code is in the [Notebook](https://github.com/KouroshKSH/Astrophysical-Image-Processing-Using-JWST/tree/main/Notebooks) folder. Once cloned or downloaded, simply run each cell in a sequential manner. Make sure that the `.fits` data sets are in the same directory as the Jupyter notebookes that you wish to run. They are:
+The majority of the code is in the [Notebook](https://github.com/KouroshKSH/Astrophysical-Image-Processing-Using-JWST/tree/main/Notebooks) folder. Once cloned or downloaded, simply run each cell in a sequential manner. Make sure that the `.fits` data sets are in the same directory as the Jupyter notebooks that you wish to run. They are:
 1. `carine_nircam.fits` ([link](https://github.com/KouroshKSH/Astrophysical-Image-Processing-Using-JWST/blob/main/Notebooks/carina_nircam.fits))
 2. `m16_nircam.fits` ([link](https://github.com/KouroshKSH/Astrophysical-Image-Processing-Using-JWST/blob/main/Notebooks/carina_nircam.fits))
 
@@ -49,12 +49,16 @@ For more information regarding this project, feel free to read the [project repo
 
 # Project Report
 ## Abstract
-The goal of this project was to use computational methods to analyze and process the quantitative data provided by the James Webb Space Telescope (JWST). Specifically, the team worked with images taken by the Near-Infrared Camera (NIRCam) instrument of the JWST. These images were unique due to the use of advanced electron absorption technology, which enabled the team to capture highly detailed infrared wavelength data with unparalleled precision. The project aimed to detect and count the stars in a specific region of the Milky Way Galaxy, called the Pillars of Creation. To accomplish this, various image processing techniques were employed. The rest of the report is dedicated to explain each phase of the project in more detail.
+The goal of this project was to use computational methods to analyze and process the quantitative data provided by the James Webb Space Telescope (JWST). Specifically, the team worked with images taken by the Near-Infrared Camera (NIRCam) instrument of the JWST. These images were unique due to the use of advanced electron absorption technology, which enabled the team to capture highly detailed infrared wavelength data with unparalleled precision. The project aimed to detect and count the stars in a specific region of the _Milky Way_ Galaxy, called the Pillars of Creation. To accomplish this, various image processing techniques were employed. The rest of the report is dedicated to the explanation of each phase of the project in more detail.
+
+![image of pillars colormap](https://github.com/KouroshKSH/Astrophysical-Image-Processing-Using-JWST/blob/main/Notebooks/img/m16_BoneColorMap.png)
+
+> Figure: A Visual Representation of the Dataset using the m16-Bone Colormap
 
 ---
 
 ## Introduction
-The James Webb Space telescope is a space observatory that is optimized for infrared wavelengths. This optimization for infrared wavelengths will enable scientists to go back further in time and see red-shifted light as well as inside nebulas, and other objects that are harder to observe with visible light spectrum. This information sheds light on the universe’s past, present, and future. To tackle this project, a team of four sophomore computer science students have set out to find the answer to the question below:
+The James Webb Space Telescope (JWST) is a space observatory that is optimized for infrared wavelengths. This optimization for infrared wavelengths will enable scientists to go back further in time and see red-shifted light as well as inside nebulas, and other objects that are harder to observe with visible light spectrum. This information sheds light on the universe’s past, present, and future. To tackle this project, a team of four sophomore computer science students have set out to find the answer to the question below:
 > “How to count the number of stars in a specific region of an image taken by James Webb Space Telescope (JWST), and to categorize them based on their mass and temperature, in order to compare these findings with other academic literature for different galaxies”
 
 To be able to record and measure these wavelengths, Webb uses the previously mentioned instruments in specific conditions. All instruments are kept cold at temperatures below 54 Kelvin, with MIRI being kept at only 7K, to reduce the unwanted noise from the instruments as much as possible. Thereafter, the light gets reflected back to the secondary mirror by the 18 primary mirrors that are precisely positioned relative to each other, which are coated with a layer of gold to maximize the reflection of infrared light. The primary goal of the JWST is to study galaxy, star, and planet formations. The JWST has a total of 4 instruments in the ISIM. Each of these instruments are specialized for a specific set of tasks. For instance, NIRCam is Webb’s primary camera, which covers the infrared wavelength range from 0.6 - 5.0 micrometers. NIRCam’s data, and its analysis, are the primary subjects of this group project. NIRCam uses its near-IR HgCdTe detector to start its electron sensing process. Meanwhile, a semiconductor absorbs an incoming photon, which generates mobile electron hole pairs. These electrons travel under the influence of pre-built and applied electric fields until they find their way to where they can be collected.
@@ -96,36 +100,30 @@ After that, the team began to construct the first part of the program using the 
 
 ---
 
-## Background Estimation
-### Gaussian Distribution
-### Median Blur
+## Image Processing Pipeline
+1. Gaussian Distribution
+2. Median Blur
+3. Otsu Method
 
----
+![otsu result](https://github.com/KouroshKSH/Astrophysical-Image-Processing-Using-JWST/blob/main/Notebooks/img/otsu_processed_image.jpg)
 
-## Otsu Method
-## Canny Edge Detection
-## Rectangle Detection (OpenCV)
-### Plotting Intensity per Pixel
+> Figure: A Visual Representation of the Data in the Middle of the Pipeline
+
+4. Canny Edge Detection
+5. Rectangle Detection (OpenCV)
+6. Plotting Intensity per Pixel
 
 ---
 
 ## Plotting the Data
-### Normal Scale
-### Log Scale
-### 3D
 
----
+![log image](https://github.com/KouroshKSH/Astrophysical-Image-Processing-Using-JWST/blob/main/Notebooks/img/LogNormInterpolated.png)
 
-## Comparison Using Anderson-Darling Test
-
----
-
-## Regression & Best-fit Curve
-### Linear Regression
-### Power Law Trend
+> Figure: The Log-Norm Interpolated Representation of the Data
 
 ---
 
 ## Results
-## Initial Hypothesis
-## Discussion & Conclusion
+In the end, we were able to detect about *10,000* (ten thousand) stars with close to **93% accuracy**.
+
+For more information regarding the exact calculations and methods used, please refer to the [Notebooks](https://github.com/KouroshKSH/Astrophysical-Image-Processing-Using-JWST/tree/main/Notebooks) folder of this repository. There, you can find in-depth explanation for all the tools used, and their corresponding results.
